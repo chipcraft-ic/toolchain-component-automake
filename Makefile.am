@@ -126,11 +126,9 @@ EXTRA_DIST += \
 
 # Most work delegated to sub-dir makefile fragments.
 include $(srcdir)/bin/local.mk
-include $(srcdir)/doc/local.mk
 include $(srcdir)/lib/local.mk
 include $(srcdir)/lib/Automake/local.mk
 include $(srcdir)/lib/am/local.mk
 include $(srcdir)/m4/local.mk
-include $(srcdir)/t/local.mk
 
 # vim: ft=automake noet

@@ -103,11 +103,6 @@ dosubst m4/amversion.in m4/amversion.m4
 dosubst bin/aclocal.in bin/aclocal.tmp
 dosubst bin/automake.in bin/automake.tmp
 
-# Create required makefile snippets.
-$PERL ./gen-testsuite-part > t/testsuite-part.tmp
-chmod a-w t/testsuite-part.tmp
-mv -f t/testsuite-part.tmp t/testsuite-part.am
-
 # Run the autotools.  Bail out if any warning is triggered.
 # Use '-I' here so that our own *.m4 files in m4/ gets included,
 # not copied, in aclocal.m4.
