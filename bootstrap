@@ -96,9 +96,6 @@ dosubst ()
 dosubst automake-$APIVERSION/Automake/Config.in \
         automake-$APIVERSION/Automake/Config.pm
 
-# Overwrite amversion.m4.
-dosubst m4/amversion.in m4/amversion.m4
-
 # Create temporary replacement for aclocal and automake.
 dosubst bin/aclocal.in bin/aclocal.tmp
 dosubst bin/automake.in bin/automake.tmp

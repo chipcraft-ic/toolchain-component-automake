@@ -2650,13 +2650,13 @@ fi
 
 # Some tools Automake needs.
 
-ACLOCAL=${ACLOCAL-"${am_missing_run}aclocal-${am__api_version}"}
+ACLOCAL=${ACLOCAL-"${am_missing_run}aclocal"}
 
 
 AUTOCONF=${AUTOCONF-"${am_missing_run}autoconf"}
 
 
-AUTOMAKE=${AUTOMAKE-"${am_missing_run}automake-${am__api_version}"}
+AUTOMAKE=${AUTOMAKE-"${am_missing_run}automake"}
 
 
 AUTOHEADER=${AUTOHEADER-"${am_missing_run}autoheader"}
@@ -2755,8 +2755,8 @@ system_acdir="\${datadir}/aclocal"
 # aclocal and automake, hence the remake rules must use those versions
 # as well.  The extra quoting is to cater to cases when the build
 # directory contains whitespace or shell metacharacters.
-ACLOCAL="\"`pwd`/pre-inst-env\" aclocal-$APIVERSION"
-AUTOMAKE="\"`pwd`/pre-inst-env\" automake-$APIVERSION"
+ACLOCAL="\"`pwd`/pre-inst-env\" aclocal"
+AUTOMAKE="\"`pwd`/pre-inst-env\" automake"
 
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether ln -s works" >&5
 printf %s "checking whether ln -s works... " >&6; }

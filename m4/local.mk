@@ -60,19 +60,4 @@ dist_system_ac_DATA = %D%/acdir/README
 automake_internal_acdir = $(automake_acdir)/internal
 dist_automake_internal_ac_DATA = %D%/internal/ac-config-macro-dirs.m4
 
-# We build amversion.m4 here, instead of from config.status,
-# because config.status is rerun each time one of configure's
-# dependencies change and amversion.m4 happens to be a configure
-# dependency.  configure and amversion.m4 would be rebuilt in
-# loop otherwise.
-# Use '$(top_srcdir)' for the benefit of non-GNU makes: this is
-# how amversion.m4 appears in our dependencies.
-$(top_srcdir)/%D%/amversion.m4: $(srcdir)/configure.ac \
-                                $(srcdir)/%D%/amversion.in
-	$(AM_V_at)rm -f $@-t $@
-	$(AM_V_GEN)in=amversion.in \
-	  && $(do_subst) <$(srcdir)/%D%/amversion.in >$@-t
-	$(generated_file_finalize)
-EXTRA_DIST += %D%/amversion.in
-
 # vim: ft=automake noet

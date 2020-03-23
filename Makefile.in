@@ -393,7 +393,7 @@ EXTRA_DIST = bootstrap GNUmakefile HACKING PLANS contrib/tap-driver.pl \
 	old/ChangeLog.09 old/ChangeLog.11 old/TODO maintainer/am-ft \
 	maintainer/am-xft maintainer/rename-tests maintainer/maint.mk \
 	maintainer/syntax-checks.mk $(AUTOMAKESOURCES) \
-	lib/Automake/Config.in m4/amversion.in
+	lib/Automake/Config.in
 TAGS_FILES = $(AUTOMAKESOURCES)
 dist_noinst_DATA = 
 nodist_noinst_DATA = 
@@ -572,19 +572,6 @@ all: all-am
 .SUFFIXES:
 am--refresh: Makefile
 	@:
-$(srcdir)/Makefile.in:  $(srcdir)/Makefile.am $(srcdir)/bin/local.mk $(srcdir)/lib/local.mk $(srcdir)/lib/Automake/local.mk $(srcdir)/lib/am/local.mk $(srcdir)/m4/local.mk $(am__configure_deps)
-	@for dep in $?; do \
-	  case '$(am__configure_deps)' in \
-	    *$$dep*) \
-	      echo ' cd $(srcdir) && $(AUTOMAKE) --gnu --ignore-deps'; \
-	      $(am__cd) $(srcdir) && $(AUTOMAKE) --gnu --ignore-deps \
-		&& exit 0; \
-	      exit 1;; \
-	  esac; \
-	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu --ignore-deps Makefile'; \
-	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu --ignore-deps Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
 	  *config.status*) \
@@ -1289,20 +1276,6 @@ lib/Automake/Config.pm: lib/Automake/Config.in Makefile
 # vim: ft=automake noet
 
 # vim: ft=automake noet
-
-# We build amversion.m4 here, instead of from config.status,
-# because config.status is rerun each time one of configure's
-# dependencies change and amversion.m4 happens to be a configure
-# dependency.  configure and amversion.m4 would be rebuilt in
-# loop otherwise.
-# Use '$(top_srcdir)' for the benefit of non-GNU makes: this is
-# how amversion.m4 appears in our dependencies.
-$(top_srcdir)/m4/amversion.m4: $(srcdir)/configure.ac \
-                                $(srcdir)/m4/amversion.in
-	$(AM_V_at)rm -f $@-t $@
-	$(AM_V_GEN)in=amversion.in \
-	  && $(do_subst) <$(srcdir)/m4/amversion.in >$@-t
-	$(generated_file_finalize)
 
 # vim: ft=automake noet
 
