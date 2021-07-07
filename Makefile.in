@@ -571,24 +571,11 @@ all: all-am
 .SUFFIXES:
 am--refresh: Makefile
 	@:
-Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
-	@case '$?' in \
-	  *config.status*) \
-	    echo ' $(SHELL) ./config.status'; \
-	    $(SHELL) ./config.status;; \
-	  *) \
-	    echo ' cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__maybe_remake_depfiles)'; \
-	    cd $(top_builddir) && $(SHELL) ./config.status $@ $(am__maybe_remake_depfiles);; \
-	esac;
 $(srcdir)/bin/local.mk $(srcdir)/lib/local.mk $(srcdir)/lib/Automake/local.mk $(srcdir)/lib/am/local.mk $(srcdir)/m4/local.mk $(am__empty):
 
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	$(SHELL) ./config.status --recheck
 
-$(top_srcdir)/configure:  $(am__configure_deps)
-	$(am__cd) $(srcdir) && $(AUTOCONF)
-$(ACLOCAL_M4):  $(am__aclocal_m4_deps)
-	$(am__cd) $(srcdir) && $(ACLOCAL) $(ACLOCAL_AMFLAGS)
 $(am__aclocal_m4_deps):
 pre-inst-env: $(top_builddir)/config.status $(srcdir)/pre-inst-env.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
